@@ -1,6 +1,5 @@
 <?php
 
-declare(strict_types=1);
 
 function k_complement(int $k, array $a): int {
     $amountComplimentary = 0;

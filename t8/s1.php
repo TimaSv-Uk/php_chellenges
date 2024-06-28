@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+
 
 function mirror(array $numbers): array {
     $max = max(array_keys($numbers));

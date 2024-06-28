@@ -1,31 +1,25 @@
 <?php
 
-declare(strict_types=1);
+#### Task 2
+#
+#Create a function `number_to_ordinal` to create an ordinal number for a given input.
+#Ordinal numbers in English have something like `st`, `nd`, `rd`, etc.
+#
+#**Requirements:**
+#
+#- Apply for number 1 to 1001... if that works any given number will do ;-)
 
-function number_to_ordinal(int $number): string
+function number_to_ordinal(int $num): string
 {
-    if (0 === $number) {
-        return '0';
-    }
+  $str_num = strval($num);
+  if ($num >= 10 && $num <= 20) {
 
-    $ending = 'th';
-
-    if (!in_array(($number % 100), [11, 12, 13])) {
-        switch ($number % 10) {
-            // Handle 1st, 2nd, 3rd
-            case 1:
-                $ending = 'st';
-                break;
-
-            case 2:
-                $ending = 'nd';
-                break;
-
-            case 3:
-                $ending = 'rd';
-                break;
-        }
-    }
-
-    return $number.$ending;
+    return  $str_num . "th";
+  }
+  return match (substr($str_num, -1)) {
+    "1" => $str_num . "st",
+    "2" => $str_num . "nd",
+    "3" => $str_num . "rd",
+    default => $str_num . "th",
+  };
 }

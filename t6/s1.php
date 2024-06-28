@@ -1,6 +1,5 @@
 <?php
 
-declare(strict_types=1);
 
 function fib(int $n): int {
     if ($n < 0) {

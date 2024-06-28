@@ -1,6 +1,5 @@
 <?php
 
-declare(strict_types=1);
 #### Task 1
 #
 #Create a function `maskify` to mask digits of a credit card number with `#`.

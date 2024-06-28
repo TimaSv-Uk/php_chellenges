@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+
 
 function jump_out_of_array(array $a): int {
     $sum = 0;
