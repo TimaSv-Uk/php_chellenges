@@ -22,4 +22,5 @@ return array(
     '201d0ccebed5be18a49199a6ab8870d1' => $baseDir . '/t5/s1.php',
     'f3379b4a2d00b8385219d1f2bb4ea667' => $baseDir . '/t6/s1.php',
     '386a1739279bb95b02f62af4b45dfb03' => $baseDir . '/t8/s1.php',
+    '82279fbc52e139eb91a7f34751f2cd7e' => $baseDir . '/1.php',
 );

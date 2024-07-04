@@ -1,56 +1,35 @@
 <?php
 
 
-function calculate(string $expression)
+#### Task 3
+#
+#Create a calculator for [Reverse Polish Notation](https://en.wikipedia.org/wiki/Reverse_Polish_notation).
+#Write a `calculate` function that accepts an input and returns the result of the operation.
+#
+#**Requirements:**
+#
+#- Support the mathematical operations for `+`, `-`, `*` and `/`
+#- Check for invalid syntax, like `2 3+`. There is a space missing.
+#- Return 0 (integer) when nothing is entered
+#- Return the numeric value when no operand is given, like `1 2 3.5` return `3.5`
+
+
+function calculate(string $num_num_operand): int|float|bool
 {
-    $result = 0;
-    $splittedExpressions = explode(' ', $expression);
+  $equesion =  explode(" ", $num_num_operand);
+  if (!is_numeric($equesion[0]) || !is_numeric($equesion[1])) {
+    return 0;
+  }
 
-    if (empty($expression)) {
-        return $result;
-    }
+  if (is_numeric($equesion[2])) {
+    return $equesion[2];
+  }
 
-    // Last item is not an operand but a numeric value, then directly output it.
-    // Special handling to check if float or int value.
-    if (is_numeric(end($splittedExpressions))) {
-        return false !== strpos(end($splittedExpressions), '.') ? (float) end($splittedExpressions) : (int) end($splittedExpressions);
-    }
-
-    $numbers = [];
-    $validOperations = ['+', '-', '*', '/'];
-
-    foreach ($splittedExpressions as $single) {
-        if (false === is_numeric($single) && !in_array($single, $validOperations)) {
-            return false;
-        }
-
-        if (is_numeric($single)) {
-            $numbers[] = $single;
-        } else {
-            $number1 = array_pop($numbers);
-            $number2 = array_pop($numbers);
-
-            switch ($single) {
-                case '+':
-                    $result = $number2 + $number1;
-                    break;
-
-                case '-':
-                    $result = $number2 - $number1;
-                    break;
-
-                case '*':
-                    $result = $number2 * $number1;
-                    break;
-
-                case '/':
-                    $result = $number2 / $number1;
-                    break;
-            }
-
-            $numbers[] = $result;
-        }
-    }
-
-    return $result;
+  return match ($equesion[2]) {
+    "+" => intval($equesion[0]) + intval($equesion[1]),
+    "-" => intval($equesion[0]) - intval($equesion[1]),
+    "*" => intval($equesion[0]) * intval($equesion[1]),
+    "/" => intval($equesion[0]) / intval($equesion[1]),
+    default => false,
+  };
 }

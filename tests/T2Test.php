@@ -46,4 +46,9 @@ final class T2Test extends TestCase
   {
     $this->assertSame('21st', number_to_ordinal(21));
   }
+
+  public function test9th()
+  {
+    $this->assertSame('11th', number_to_ordinal(11));
+  }
 }

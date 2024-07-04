@@ -23,6 +23,7 @@ class ComposerStaticInit1bc9287d7e549948498dd0c5f969ff46
         '201d0ccebed5be18a49199a6ab8870d1' => __DIR__ . '/../..' . '/t5/s1.php',
         'f3379b4a2d00b8385219d1f2bb4ea667' => __DIR__ . '/../..' . '/t6/s1.php',
         '386a1739279bb95b02f62af4b45dfb03' => __DIR__ . '/../..' . '/t8/s1.php',
+        '82279fbc52e139eb91a7f34751f2cd7e' => __DIR__ . '/../..' . '/1.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -68,6 +69,7 @@ class ComposerStaticInit1bc9287d7e549948498dd0c5f969ff46
         'A' => 
         array (
             'App\\' => 4,
+            'AoC\\' => 4,
         ),
     );
 
@@ -150,6 +152,10 @@ class ComposerStaticInit1bc9287d7e549948498dd0c5f969ff46
         'App\\' => 
         array (
             0 => '/',
+        ),
+        'AoC\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/AoC',
         ),
     );
 

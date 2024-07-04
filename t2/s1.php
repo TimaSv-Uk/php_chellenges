@@ -11,11 +11,18 @@
 
 function number_to_ordinal(int $num): string
 {
+
   $str_num = strval($num);
-  if ($num >= 10 && $num <= 20) {
+
+  if (0 === $num) {
+    return '0';
+  }
+
+  if (in_array($num, [11, 12, 13])) {
 
     return  $str_num . "th";
   }
+
   return match (substr($str_num, -1)) {
     "1" => $str_num . "st",
     "2" => $str_num . "nd",

@@ -1,36 +1,41 @@
 {
-    "name": "codedge/coding-challenges",
-    "description": "",
-    "require": {
-        "php": "^8.0",
-        "phpunit/phpunit": "^9.5",
-        "illuminate/support": "^11.13"
-    },
-    "autoload": {
-        "files": [
-            "bootstrap.php"
-        ],
-        "psr-4": {
-            "App\\": "/"
-        }
-    },
-    "autoload-dev": {
-        "files": [
-            "t1/s1.php",
-            "t2/s1.php",
-            "t3/s1.php",
-            "t4/s1.php",
-            "t5/s1.php",
-            "t6/s1.php",
-            "t8/s1.php"
-        ],
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
-    },
-    "scripts": {
-        "test": [
-            "./vendor/bin/phpunit"
-        ]
+  "name": "codedge/coding-challenges",
+  "description": "",
+  "require": {
+    "php": "^8.0",
+    "phpunit/phpunit": "^9.5",
+    "illuminate/support": "^11.13"
+  },
+  "autoload": {
+    "files": [
+      "bootstrap.php"
+    ],
+    "psr-4": {
+      "App\\": "/"
     }
+  },
+  "config":{
+    "optimize-autoload":true
+  },
+  "autoload-dev": {
+    "files": [
+      "t1/s1.php",
+      "t2/s1.php",
+      "t3/s1.php",
+      "t4/s1.php",
+      "t5/s1.php",
+      "t6/s1.php",
+      "t8/s1.php",
+      "1.php"
+    ],
+    "psr-4": {
+      "Tests\\": "tests/",
+      "AoC\\": "AoC/"
+    }
+  },
+  "scripts": {
+    "test": [
+      "./vendor/bin/phpunit"
+    ]
+  }
 }
