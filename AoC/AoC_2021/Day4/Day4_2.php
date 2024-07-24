@@ -3,64 +3,42 @@
 namespace AoC_2021\Day4;
 
 use Illuminate\Support\Collection;
+use AoC_2021\Day4\Bingo_board;
 
 class Day4_2
 {
   public Collection $data;
+  public Collection $bingo_numbers;
+
+  /**
+   * @var Collection<Bingo_board>
+   */
+  public Collection $bingo_boards;
 
   public function __construct(public string $file_name)
   {
-    $this->data = new Collection(file($this->file_name));
+    $data = explode("\n\n", file_get_contents($this->file_name));
+    $this->data = new Collection($data);
+    $this->bingo_numbers = new Collection(explode(",", $this->data->shift()));
+    $this->bingo_boards = $this->data->map(fn ($string_board) => new Bingo_board($string_board));
   }
   public function solution(): int
   {
-    return bindec($this->oxygen_generator_rating()) * bindec($this->CO2_scrubber_rating());
-  }
-
-  public function oxygen_generator_rating(): string
-  {
-
-    $filter = $this->data;
-    $row_len = strlen(trim($this->data[0]));
-
-    for ($i = 0; $i < $row_len; $i++) {
-
-      $ones = $filter->filter(fn ($dig) => $dig[$i] === "1");
-      $zeros = $filter->filter(fn ($dig) => $dig[$i] === "0");
-
-      if ($ones->count() >= $zeros->count()) {
-        $filter = $ones;
-      } else {
-        $filter = $zeros;
-      }
-      print_r($filter);
-      if (count($filter) === 1) {
-        break;
+    $all_boards_first_win  = [];
+    $all_boards_that_claimed_win  = [];
+    foreach ($this->bingo_numbers as $bingo_number) {
+      foreach ($this->bingo_boards as $key => $bingo_board) {
+        if(in_array($key,$all_boards_that_claimed_win)){
+            continue;
+        }
+        $bingo_board->mark_number($bingo_number);
+        if ($bingo_board->marked_row_or_col()) {
+          $win = $bingo_number * $bingo_board->sum_of_unmarked();
+          $all_boards_first_win[] = $win;
+          $all_boards_that_claimed_win[] = $key;
+        }
       }
     }
-    return $filter->first();
-  }
-
-  public function CO2_scrubber_rating(): string
-  {
-
-    $filter = $this->data;
-    $row_len = strlen(trim($this->data[0]));
-
-    for ($i = 0; $i < $row_len; $i++) {
-
-      $ones = $filter->filter(fn ($dig) => $dig[$i] === "1");
-      $zeros = $filter->filter(fn ($dig) => $dig[$i] === "0");
-
-      if ($ones->count() < $zeros->count()) {
-        $filter = $ones;
-      } else {
-        $filter = $zeros;
-      }
-      if (count($filter) === 1) {
-        break;
-      }
-    }
-    return $filter->first();
+    return array_pop($all_boards_first_win);
   }
 }
