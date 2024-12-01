@@ -8,6 +8,7 @@ use AoC_2021\Day4\Day4_2;
 
 final class Day4Test extends TestCase
 {
+  
   public function test_part1(): void
   {
     $example = new Day4_1(__DIR__ . "/../../AoC_2021/Day4/data0.txt");
