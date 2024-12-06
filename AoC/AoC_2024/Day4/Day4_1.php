@@ -1,11 +1,10 @@
 <?php
 
-namespace AoC_2024\Day4;
+namespace AoC_2024\Day4_1;
 
 use Illuminate\Support\Collection;
-use PHPUnit\Framework\MockObject\Generator\DuplicateMethodException;
 
-class Day4
+class Day4_1
 {
   public Collection $data;
   public string $word_to_find = "XMAS";
@@ -20,30 +19,6 @@ class Day4
     return $found_intances;
   }
 
-  public function solution_part2()
-  {
-    $found_intances = $this->search_diagonaly($this->data);
-
-    $diagonal_horisontal_data =  $this->to_diagonal_horisontal_array($this->data);
-    $diagonal_horisontal_data_reverse =  $this->to_diagonal_horizontal_array_reverse($this->data);
-    dump([$diagonal_horisontal_data,$diagonal_horisontal_data_reverse]);
-    /*dump($this->filter_mas_horizontal($diagonal_horisontal_data), $this->filter_mas_horizontal($diagonal_horisontal_data_reverse));*/
-    return 0 ;
-  }
-
-
-  public function filter_mas_horizontal($split_text):Collection
-  {
-    $all_mas = [];
-    foreach ($split_text as $horizontal_line) {
-      $line_instances = collect($horizontal_line)
-        ->sliding(3)
-        ->map(fn($letters) => $letters->implode(""))
-        ->filter(fn($word) => $word === "MAS" | $word === "SAM");
-      $all_mas[] = $line_instances;
-    }
-    return collect($all_mas);
-  }
   public function search_diagonaly($split_text): int
   {
 
