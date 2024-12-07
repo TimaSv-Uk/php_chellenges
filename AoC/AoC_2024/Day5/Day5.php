@@ -68,9 +68,6 @@ class Day5
       if (!$this->is_update_correct($update, $this->rule_map)) {
         $middle_index = floor(count($update) / 2);
         $fixed_update = $this->fix_order_update($update, $this->rule_map);
-        while (!$this->is_update_correct($fixed_update, $this->rule_map)) {
-          $this->is_update_correct($fixed_update, $this->rule_map);
-        }
         $sum_of_middle_items_in_correct_updates += $fixed_update[$middle_index];
         dump($this->is_update_correct($fixed_update, $this->rule_map));
       }
