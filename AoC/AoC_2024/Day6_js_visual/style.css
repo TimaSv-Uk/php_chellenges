@@ -1,0 +1,19 @@
+#output {
+  font-size: 50px;
+}
+.element{
+  width: 50px;
+  height: 50px;
+}
+.current{
+  color: green;
+  font: bold;
+  background-color: greenyellow;
+}
+.line {
+  display: flex;
+}
+#answerDiv{
+  margin-top: 20px;
+  font: 30px bold;
+}
