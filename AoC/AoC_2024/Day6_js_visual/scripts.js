@@ -102,7 +102,7 @@ function move(mapElements, guardStartPosition) {
   }
   while (nextElement !== undefined && nextElement.textContent !== "#") {
     nextElement.classList.add("current");
-    nextElement.textContent = direction;
+    // nextElement.textContent = direction;
     col += moveDelta.col;
     row += moveDelta.row;
     nextElement = mapElements[col] && mapElements[col][row];

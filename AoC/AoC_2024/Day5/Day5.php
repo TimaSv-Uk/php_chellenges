@@ -16,7 +16,7 @@ class Day5
     [$rules, $updates] =  explode(PHP_EOL . PHP_EOL, trim(file_get_contents($this->file_name)));
     $this->updates = collect(explode(PHP_EOL, $updates))->map(fn($update) => explode(",", trim($update)));
     $rules = collect(explode(PHP_EOL, $rules))->map(fn($rule) => explode("|", trim($rule)));
-
+    
     $rule_map = [];
     foreach ($rules as $rule) {
       [$before, $after] = $rule;
