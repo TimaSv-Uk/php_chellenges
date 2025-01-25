@@ -48,8 +48,8 @@ function next_row(array $array)
 	$new_array;
 	return $new_array;
 };
-// print_r(next_row([1, 3, 3, 1]));
+print_r(next_row([1, 3, 3, 1]));
 // generate(5);
-print_r(
-	generate(5)
-);
+// print_r(
+// 	generate(5)
+// );
